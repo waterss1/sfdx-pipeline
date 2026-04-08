@@ -1,5 +1,4 @@
 # This is a basic workflow to help you get started with Actions
-
 name: CI
 
 # Controls when the workflow will run
@@ -25,12 +24,25 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo "The current branch is $GITHUB_REF_NAME"
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Install Salesforce CLI
+        run: npm install -g @salesforce/cli
+
+      - name: Authenticate to Salesforce
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          echo "${{ secrets.SFDX_AUTH_URL }}" > ./sfdx_auth.txt
+          sf org login auth sfdx-url --sfdx-url-file ./sfdx_auth.txt --set-default --alias targetOrg
+          rm ./sfdx_auth.txt
+
+      - name: Validate Deployment
+        run: |
+          sf project deploy validate \
+            --source-dir force-app \
+            --target-org targetOrg \
+            --test-level RunLocalTests \
+            --wait 30
+--target-org targetOrg \
+            --test-level RunLocalTests \
+            --wait 30
