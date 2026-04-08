@@ -33,7 +33,7 @@ jobs:
       - name: Authenticate to Salesforce
         run: |
           echo "$secrets.SFDX_AUTH_URL" > ./sfdx_auth.txt
-          sf org login auth sfdx-url --sfdx-url-file ./sfdx_auth.txt --set-default --alias targetOrg
+          sf org login sfdx-url --sfdx-url-file ./sfdx_auth.txt --set-default --alias targetOrg
           rm ./sfdx_auth.txt
 
       - name: Validate Deployment
