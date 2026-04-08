@@ -43,6 +43,3 @@ jobs:
             --target-org targetOrg \
             --test-level RunLocalTests \
             --wait 30
---target-org targetOrg \
-            --test-level RunLocalTests \
-            --wait 30
