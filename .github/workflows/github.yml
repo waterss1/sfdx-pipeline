@@ -16,6 +16,6 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-      - run: chmod +x sfdxbuild.sh
+      - run: chmod +x .github/workflows/sfdxbuild.sh
       - run: |
-          ./sfdxbuild.sh
+          .github/workflows/sfdxbuild.sh
