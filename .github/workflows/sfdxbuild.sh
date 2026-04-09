@@ -1,1 +1,1 @@
-echo "🍏 This job's status is $job."
+echo "🍏 This job's status is $JOB_STATUS."
