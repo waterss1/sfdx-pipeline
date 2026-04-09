@@ -1,1 +1,1 @@
-echo "🍏 This job's status is ${{ job.status }}."
+echo "🍏 This job's status is $job.status."
